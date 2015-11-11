@@ -49,7 +49,7 @@ class DNATestCase extends DrupalUnitTestCase {
 
     $description = 'Input the letter "A", output the letter "T"';
     //Arrange
-    $input = 'a';
+    $input = 'A';
     //Act
     $result = dna_finder($input);
     //Assert
