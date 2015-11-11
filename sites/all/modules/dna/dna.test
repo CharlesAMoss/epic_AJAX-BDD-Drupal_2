@@ -47,13 +47,13 @@ class DNATestCase extends DrupalUnitTestCase {
 
   function testDnaFinder() {
 
-    $description = 'Input the letter "A", output the letter "T"';
+    $description = 'Input the letter "A", output the letter "A T"';
     //Arrange
     $input = 'A';
     //Act
     $result = dna_finder($input);
     //Assert
-    $expected_output = 'T';
+    $expected_output = 'A T';
     $this->assertTrue($result, $expected_output, $description);
   }
 
