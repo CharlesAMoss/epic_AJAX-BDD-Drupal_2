@@ -32,3 +32,13 @@ function dna_form() {
 
     return $form;
 }
+
+function element_validate_base($element) {
+    $split = str_split($element['#value']); //
+    $valid = array('A', 'a', 'C', 'c', 'G', 'g', 'T', 't');
+    foreach ($split as $base) {
+        if (!in_array($base, $valid)) {
+            form_error($element, t('Only A, C, G, or T are valid entry.'));
+        }
+    }
+}

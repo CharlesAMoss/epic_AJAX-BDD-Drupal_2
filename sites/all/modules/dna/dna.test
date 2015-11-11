@@ -1,6 +1,5 @@
 <?php
 
-
 class DNATests extends DrupalWebTestCase {
     public static function getInfo() {
         return array(
