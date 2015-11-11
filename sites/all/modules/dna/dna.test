@@ -32,7 +32,7 @@
 //     return user_save($user);
 //   }
 //   public function testNewPage() {
-//     $this->assertText("TACG", 'The text is correct');
+//     $this->assertText("ATGC TACG", 'The text is correct');
 //   }
 // }
 
@@ -55,6 +55,17 @@ class DNATestCase extends DrupalUnitTestCase {
     //Assert
     $expected_output = 'A T';
     $this->assertTrue($result, $expected_output, $description);
+
+    $description = 'Input the letter "AT", output the letter "AT TA"';
+    //Arrange
+    $input = 'at';
+    //Act
+    $result = dna_finder($input);
+    //Assert
+    $expected_output = 'TA';
+    $this->assertTrue($result, $expected_output, $description);
+
+
   }
 
 }

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * DNA pair generator module.
+ */
+
 function dna_menu() {
   $items['dna_input'] = array(
     'title' => 'DNA Chain Input',
@@ -21,7 +26,7 @@ function dna_form() {
   $form['input_dna_chain'] = array(
       '#title' => 'Input DNA chain',
       '#type' => 'textfield',
-      '#description' => t("Input the letters A, C, G, and T to find corresponding pair"),
+      '#description' => t("Input the letters A, C, G, and T to find corresponding pair, no spaces please."),
       '#element_validate' => array('element_validate_base')
   );
 
@@ -43,26 +48,26 @@ function element_validate_base($element) {
 }
 
 function dna_form_submit($form, &$form_state) {
-    $input_dna_chain = $form_state['values']['input_dna_chain'];
-    $result = dna_finder($input_dna_chain);
-    $_SESSION['dna_results'] = $result;
-    $form_state['redirect'] = 'dna_success';
+  $input_dna_chain = $form_state['values']['input_dna_chain'];
+  $result = dna_finder($input_dna_chain);
+  $_SESSION['dna_results'] = $result;
+  $form_state['redirect'] = 'dna_success';
 }
 
 function dna_finder($dna_chain) {
-    $output = "";
-    $str = strtolower($dna_chain);
+  $output = "";
+  $str = strtolower($dna_chain);
 
-    if ($str === 'a') {
-      $output .= 't';
-    }
+  if ($str === 'a') {
+    $output .= 't';
+  }
 
-    $output = $dna_chain . ' ' . $output;
-    $dna_output = strtoupper($output);
-    return $dna_output;
+  $output = $dna_chain . ' ' . $output;
+  $dna_output = strtoupper($output);
+  return $dna_output;
 }
 
 function dna_display() {
-    $final_output = $_SESSION['dna_results'];
-    return "<h2>" . $final_output . "</h2>";
+  $final_output = $_SESSION['dna_results'];
+  return "<h2>" . $final_output . "</h2>";
 }
