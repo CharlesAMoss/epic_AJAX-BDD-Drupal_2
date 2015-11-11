@@ -9,7 +9,7 @@ function dna_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
   $items['dna_success'] = array(
-    'title' => 'Here is your pair',
+    'title' => 'This is the DNA pair',
     'page callback' => 'dna_display',
     'access callback' => TRUE,
     'type' => MENU_CALLBACK,

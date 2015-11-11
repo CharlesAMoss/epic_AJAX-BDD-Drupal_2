@@ -1,10 +1,40 @@
 <?php
 
+/**
+ * @file
+ * Tests DNA pair generator module.
+ */
+
 class DNATests extends DrupalWebTestCase {
     public static function getInfo() {
-        return array(
-            'name' => 'DNA Tests',
-            'description' => 'DNA module tests.',
-            'group' => 'Examples Tests',
-        );
+      return array(
+        'name' => 'DNA Tests',
+        'description' => 'DNA module tests.',
+        'group' => 'Examples Tests',
+      );
     }
+
+    public function setUp() {
+      parent::setUp(array('dna'));
+      $user = $this->drupalCreateAdminUser();
+      $this->drupalLogin($user);
+      $this->createTestingPage();
+    }
+
+    public function createTestingPage() {
+      $info = array();
+      $info['input_dna_chain'] = "ATGC";
+      $this->drupalPost('dna_input', $info, t('Find Pairs'));
+    }
+
+    public function drupalCreateAdminUser(array $permissions = array()) {
+      $roles = user_roles();
+      $index = array_search('administrator', $roles);
+      $user = $this->drupalCreateUser($permissions);
+      $user->roles[$index] = 'administrator';
+      return user_save($user);
+    }
+    public function testNewPage() {
+      $this->assertText("TACG", 'The text is correct');
+    }
+}
