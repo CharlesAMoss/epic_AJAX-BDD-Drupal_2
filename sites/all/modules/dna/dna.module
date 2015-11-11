@@ -17,4 +17,18 @@ function dna_menu() {
   return $items;
 }
 
-function dna_form() {}
+function dna_form() {
+    $form['input_dna_chain'] = array(
+        '#title' => 'Input DNA chain',
+        '#type' => 'textfield',
+        '#description' => t("Input the letters A, C, G, and T to find corresponding pair"),
+        '#element_validate' => array('element_validate_base')
+    );
+
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Find Pairs',
+    );
+
+    return $form;
+}
