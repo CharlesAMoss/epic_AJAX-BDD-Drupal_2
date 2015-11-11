@@ -18,27 +18,44 @@ function dna_menu() {
 }
 
 function dna_form() {
-    $form['input_dna_chain'] = array(
-        '#title' => 'Input DNA chain',
-        '#type' => 'textfield',
-        '#description' => t("Input the letters A, C, G, and T to find corresponding pair"),
-        '#element_validate' => array('element_validate_base')
-    );
+  $form['input_dna_chain'] = array(
+      '#title' => 'Input DNA chain',
+      '#type' => 'textfield',
+      '#description' => t("Input the letters A, C, G, and T to find corresponding pair"),
+      '#element_validate' => array('element_validate_base')
+  );
 
-    $form['submit'] = array(
-        '#type' => 'submit',
-        '#value' => 'Find Pairs',
-    );
-
-    return $form;
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Find Pairs',
+  );
+  return $form;
 }
 
 function element_validate_base($element) {
-    $split = str_split($element['#value']); //
-    $valid = array('A', 'a', 'C', 'c', 'G', 'g', 'T', 't');
-    foreach ($split as $base) {
-        if (!in_array($base, $valid)) {
-            form_error($element, t('Only A, C, G, or T are valid entry.'));
-        }
+  $split = str_split($element['#value']); //
+  $valid = array('A', 'a', 'C', 'c', 'G', 'g', 'T', 't');
+  foreach ($split as $letter) {
+    if (!in_array($letter, $valid)) {
+      form_error($element, t('Only A, C, G, or T are valid entry.'));
     }
+  }
+}
+
+function dna_form_submit($form, &$form_state) {
+    $input_dna_chain = $form_state['values']['input_dna_chain'];
+    $result = dna_finder($input_dna_chain);
+    $_SESSION['dna_results'] = $result;
+    $form_state['redirect'] = 'dna_success';
+}
+
+function dna_finder($dna_chain) {
+    $dna_output = "";
+    // all the things
+    return $dna_output;
+}
+
+function dna_display() {
+    $final_output = $_SESSION['dna_results'];
+    return "<h2>" . $final_output . "</h2>";
 }
