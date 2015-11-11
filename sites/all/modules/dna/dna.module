@@ -57,6 +57,7 @@ function dna_finder($dna_chain) {
       $output .= 't';
     }
 
+    $output = $dna_chain . ' ' . $output;
     $dna_output = strtoupper($output);
     return $dna_output;
 }
