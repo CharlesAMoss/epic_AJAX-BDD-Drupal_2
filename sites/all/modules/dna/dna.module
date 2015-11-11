@@ -63,9 +63,13 @@ function dna_finder($dna_chain) {
       $output .= 't';
     } elseif ($letter === 't') {
       $output .= 'a';
+    } elseif ($letter === 'c') {
+      $output .= 'g';
+    } else {
+      $output .= 'c';
     }
   }
-  $output = $dna_chain . ' ' . $output;
+  $output = $dna_chain . '  ' . $output;
   $dna_output = strtoupper($output);
   return $dna_output;
 }
