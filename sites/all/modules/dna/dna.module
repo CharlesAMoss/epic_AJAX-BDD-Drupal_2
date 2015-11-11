@@ -1,0 +1,20 @@
+<?php
+
+function dna_menu() {
+  $items['dna_input'] = array(
+    'title' => 'DNA Chain Input',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('dna_form'),
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['dna_success'] = array(
+    'title' => 'Here is your pair',
+    'page callback' => 'dna_display',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function dna_form() {}

@@ -1,0 +1,11 @@
+<?php
+
+<?php
+class DNATests extends DrupalWebTestCase {
+    public static function getInfo() {
+        return array(
+            'name' => 'DNA Tests',
+            'description' => 'DNA module tests.',
+            'group' => 'Examples Tests',
+        );
+    }

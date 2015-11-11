@@ -1,0 +1,28 @@
+<?php
+function newsfeed_menu() {
+  $items['path-to-ajax/%/%'] = array(
+          'access arguments' => array('access content'),
+          'page callback' => 'newsfeed_ajax_callback',
+          'page arguments' => array(1,2),
+          'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function newsfeed_ajax_callback($js, $node_id) {
+  $node = node_load($node_id);
+
+  if ($js == 'nojs') {
+    drupal_goto('node/' . $node->nid);
+  }
+  // Get Article render array and render it into HTML.
+  $build = node_view($node);
+  $html = render($build);
+  // Insert the Article's HTML into block.
+  $commands = array();
+  $commands[] = ajax_command_html('#newsfeed-ajax-wrapper', $html);
+
+  // Render the commands into JSON data format and printing them to the browser.
+  print ajax_render($commands);
+  exit;  // prevents building a whole page.
+}

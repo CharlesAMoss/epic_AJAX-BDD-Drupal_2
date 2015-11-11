@@ -1,0 +1,5 @@
+name = News Feed Loader
+description = Display Article Content Type With Ajax.
+package = Examples
+core = 7.x
+files[] = newsfeed.module
