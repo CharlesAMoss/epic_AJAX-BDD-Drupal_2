@@ -2,16 +2,20 @@
 ## _11/06/2015_
 ### By [Charles Moss](https://twitter.com/CharlesMoss)
 
-### _Note this repo picks up from the creation of the "DNA" module. An unfortunate mishap befell the database for the [original projoct](https://github.com/CharlesAMoss/epic_AJAX-BDD-Drupal)._ 
+### _Note this repo picks up from the creation of the "DNA" module. An unfortunate mishap befell the database for the [original projoct](https://github.com/CharlesAMoss/epic_AJAX-BDD-Drupal)._
 
 ## Description
 _Basic example of AJAX by viewing article content via left hand menu. The user can input a "DNA" string and the output will be the corresponding pair._
 
 ## Setup
 
-site admin for Setup:
-dnajax
-password
+_site admin for Setup:_
+db: drup_dnajax
+pw: password
+
+_drupal admin info_
+user: admin
+pw: password
 
 The database back-up can be found in 'sites/db_backup' folder.
 
